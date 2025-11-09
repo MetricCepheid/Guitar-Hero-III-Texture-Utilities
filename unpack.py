@@ -73,9 +73,10 @@ def batch_extract_dds(input_dir):
 
 
 if __name__ == '__main__':
-    print("=== DDS Extractor ===")
+    print("Guitar Hero III PC Texture Repacker")
+    print("Does not currently support console because console is bullshit")
+    print("")
     mode = input("Run in batch mode? (y/n): ").strip().lower()
-    
     if mode == 'y':
         input_dir = input("Enter path to folder containing files: ").strip('"').strip()
         batch_extract_dds(input_dir)

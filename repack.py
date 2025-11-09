@@ -156,8 +156,8 @@ def batch_repack_dds(input_dir, log_file='dds_index.txt'):
     print("\n=== Batch repack complete! ===\n")
 
 if __name__ == '__main__':
-    print("DDS Repack with Header Validation & Mipmap Regeneration for Guitar Hero III PC")
-    print("Does not currently support console")
+    print("Guitar Hero III PC Texture Repacker")
+    print("Does not currently support console because console is bullshit")
     print("")
     mode = input("Run in batch mode? (y/n): ").strip().lower()
     if mode == 'y':
