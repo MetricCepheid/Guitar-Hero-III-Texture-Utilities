@@ -25,25 +25,23 @@ def regenerate_mipmaps(dds_path, mip_count):
     temp_dir = os.path.join(os.path.dirname(dds_path), "_temp_mipmaps")
     os.makedirs(temp_dir, exist_ok=True)
 
-    if os.name == "nt":
-        cmd = [
-            "texconv",
-            "-m", str(mip_count),
-            "-nologo",
-            "-y",
-            "-o", temp_dir,
-            dds_path
-        ]
-    elif os.name == "posix":
-        cmd = [
-            "wine",
-            "texconv.exe",
-            "-m", str(mip_count),
-            "-nologo",
-            "-y",
-            "-o", temp_dir,
-            dds_path
-        ]
+    if os.name == "posix":
+        dds_path_win = f"Z:{dds_path.replace('/', '\\')}"
+        temp_dir_win = f"Z:{temp_dir.replace('/', '\\')}"
+    else:
+        dds_path_win = dds_path
+        temp_dir_win = temp_dir
+
+    cmd = [
+        "texconv" if os.name == "nt" else "wine",
+        "texconv.exe",
+        "-m", str(mip_count),
+        "-nologo",
+        "-y",
+        "-o", temp_dir_win,
+        dds_path_win
+    ]
+    #print(f"{cmd}")
 
     if not os.path.exists("./texconv.exe"):
         url = "https://github.com/microsoft/DirectXTex/releases/download/oct2025/texconv.exe"
@@ -64,7 +62,7 @@ def regenerate_mipmaps(dds_path, mip_count):
         print(f"    texconv failed: {e}")
         return dds_path
 
-    regenerated_name = os.path.splitext(os.path.basename(dds_path))[0] + ".DDS"
+    regenerated_name = os.path.splitext(os.path.basename(dds_path))[0] + ".dds"
     regenerated_path = os.path.join(temp_dir, regenerated_name)
     if os.path.exists(regenerated_path):
         os.replace(regenerated_path, dds_path)
