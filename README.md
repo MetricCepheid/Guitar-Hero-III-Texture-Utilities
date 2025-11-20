@@ -1,7 +1,11 @@
 --------------------
 
-# Guitar-Hero-III-Texture-Utilities
+# Guitar-Hero-PC-Texture-Utilities
 Python script(s) that can unpack \.pak\\\.pab\\.img.xen file formats and repack them accordingly.
+WORKS ON
+- Guitar Hero III PC
+- Guitar Hero Aerosmith PC
+- Guitar Hero World Tour PC
 
 ## Make sure you have these dependencies installed
 [Python 3.7+](https://www.python.org/downloads/) __(REQUIRED)__ <br />
